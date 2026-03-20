@@ -1,0 +1,32 @@
+# SmartSIP - Python Dependencies
+# Install with: pip install -r requirements.txt
+
+# ── Data & Math ──────────────────────────────
+numpy>=1.24
+pandas>=2.0
+scikit-learn>=1.3
+
+# ── Market Data ──────────────────────────────
+yfinance>=0.2.36
+
+# ── Technical Indicators ─────────────────────
+# pandas-ta is broken on Python 3.10 PyPI — use 'ta' instead
+ta>=0.11.0
+
+# ── Phase 2 (LSTM) ───────────────────────────
+tensorflow>=2.13        # or torch if you prefer PyTorch
+
+# ── Phase 3 (Sentiment) ──────────────────────
+requests>=2.31          # Marketaux API calls
+textblob>=0.17          # fallback sentiment scoring
+
+# ── Phase 4 (LLM) ────────────────────────────
+ollama>=0.1.7           # Python client for local Llama 3.2
+
+# ── Phase 5 (Backend) ────────────────────────
+fastapi>=0.111
+uvicorn[standard]>=0.29
+pydantic>=2.0
+
+# ── Utilities ────────────────────────────────
+python-dotenv>=1.0      # for API keys in .env file

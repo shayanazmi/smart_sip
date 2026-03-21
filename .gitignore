@@ -1,19 +1,22 @@
-# Environment variables — NEVER commit this
+# Environments
 .env
 
-# Python
+# Dependencies
+node_modules/
 __pycache__/
 *.pyc
 *.pyo
 venv/
+env/
+.venv/
 *.egg-info/
 
-# Artifacts (large files — optional, remove these lines if you want to commit them)
-artifacts/
+# Mac OS & Windows
+.DS_Store
+Thumbs.db
 
 # VS Code
 .vscode/
 
-# OS
-.DS_Store
-Thumbs.db
+# Artifacts
+artifacts/

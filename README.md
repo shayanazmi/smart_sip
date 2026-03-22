@@ -364,7 +364,7 @@ Team Members:
 * Palak
 
 
-### References & Acknowledgements
+### Acknowledgements
 
 - [Yahoo Finance](https://finance.yahoo.com/) (via `yfinance`) — Historical Nifty 50 data
 - [Marketaux](https://marketaux.com/) — Real-time financial news sentiment API

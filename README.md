@@ -1,4 +1,3 @@
----
 
 # SmartSIP — AI-Driven Dynamic SIP Accelerator
 

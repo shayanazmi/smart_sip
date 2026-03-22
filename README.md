@@ -356,12 +356,12 @@ Your Top-Up = Base SIP × Multiplier
 
 Built with ☕ and late nights by:
 
-#Team Members:
+Team Members:
 
-Shayan Azmi
-Siddharth Jogdand — https://github.com/SiddharthJogdand
-Keshav Agrawal — https://github.com/keshavagrawal12
-Palak
+* Shayan Azmi
+* Siddharth Jogdand — https://github.com/SiddharthJogdand
+* Keshav Agrawal — https://github.com/keshavagrawal12
+* Palak
 
 
 ### References & Acknowledgements

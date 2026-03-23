@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartSIP Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js via CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Icons (Lucide) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="dark-mode">
+
+    <!-- ─── Background Layer: Dark Mode (Shooting Stars) ─── -->
+    <div id="star-bg-container">
+        <div class="stars-radial"></div>
+        <div class="stars-static"></div>
+        <svg id="shooting-stars-svg" class="shooting-stars" width="100%" height="100%"></svg>
+    </div>
+
+    <!-- 3. Navigation Bar -->
+    <nav id="navbar" class="navbar">
+        <div class="nav-left">
+            <h1 class="logo">Smart<span class="highlight">SIP</span></h1>
+            <span class="tagline">AI-Driven Dynamic SIP Accelerator</span>
+        </div>
+
+        <div class="nav-center">
+            <div id="market-status-indicator" class="market-status">
+                <div class="status-dot"></div>
+                <span id="market-status-text">Market Closed</span>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <span id="last-updated-time">Last updated: --</span>
+            <button id="refresh-btn" class="icon-btn" title="Refresh Data">
+                <i data-lucide="refresh-cw" id="refresh-icon"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+
+        <!-- SECTION 1: Hero Panel -->
+        <section class="hero-panel" id="hero-section">
+
+            <!-- Left Panel: Investment Recommendation Card -->
+            <div class="card recommendation-card" id="rec-card">
+                <h2>Today's SIP Recommendation</h2>
+
+                <div class="badges-row">
+                    <span id="regime-badge" class="badge">NEUTRAL</span>
+                    <span id="multiplier-badge" class="badge badge-outline">1.00x MULTIPLIER</span>
+                </div>
+
+                <div class="message-box" id="regime-message">
+                    Market is fairly valued. Invest as per your regular plan.
+                </div>
+
+                <div class="input-group mb-reduced">
+                    <label>1. Monthly Base SIP (₹)</label>
+                    <input type="number" id="base-sip-input" value="5000" min="500" step="500" />
+                    <span class="helper-text">What you regularly pay per month.</span>
+                </div>
+
+                <div class="limits-row">
+                    <div class="input-group limits-group">
+                        <label>2. Min Top-Up (₹)</label>
+                        <input type="number" id="min-topup-input" value="0" min="0" step="100" />
+                    </div>
+                    <div class="input-group limits-group">
+                        <label>3. Max Top-Up (₹)</label>
+                        <input type="number" id="max-topup-input" value="10000" min="500" step="500" />
+                    </div>
+                </div>
+
+                <div class="financials" style="margin-top: 20px;">
+                    <div class="financial-row">
+                        <span>
+                            System Optimal Top-Up
+                            <br><small class="ai-reason" id="topup-reason">AI adjusted to buy market dip.</small>
+                        </span>
+                        <div class="amount-col">
+                            <span id="topup-amount" class="amount positive">+₹0</span>
+                            <span class="range-text" id="topup-range"></span>
+                        </div>
+                    </div>
+                    <div class="financial-row total-row">
+                        <span>Total Investment (This Month)</span>
+                        <span id="total-amount" class="amount grand-total">₹5,000</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Centre Panel: Market Health & Mood Gauge -->
+            <div class="card gauge-card">
+                <h2>Market Health & Mood</h2>
+                <div class="gauge-container">
+                    <canvas id="gaugeChart"></canvas>
+                    <div class="gauge-value" id="gauge-score">0</div>
+                    <div class="gauge-label" id="sentiment-label">Neutral</div>
+                </div>
+
+                <div class="market-catalysts" id="market-catalysts">
+                    <!-- Javascript injected -->
+                </div>
+
+                <div class="metric-breakdown">
+                    <div class="metric-row">
+                        <span>Technical Trend</span>
+                        <span id="metric-tech">--</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>News Sentiment</span>
+                        <span id="metric-sent">--</span>
+                    </div>
+                    <div class="metric-row">
+                        <span>Market Volatility</span>
+                        <span id="metric-vol" class="negative">Elevated</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: AI Explanation -->
+            <div class="card ai-card">
+                <div class="ai-header">
+                    <i data-lucide="bot"></i>
+                    <h2>AI Explanation</h2>
+                </div>
+                <div class="ai-content" id="ai-explanation">
+                    <div class="shimmer-text">Loading insights...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Logic Breakdown -->
+        <section class="logic-breakdown card section-block">
+            <h2 class="section-title">Logic Breakdown</h2>
+            <p class="section-subtitle">How your multiplier is calculated based on technical and sentiment analysis.</p>
+
+            <div class="breakdown-grid">
+                <div class="breakdown-item">
+                    <div class="item-header">
+                        <span>Technical Score</span>
+                        <span id="tech-score-val" class="score-val">--</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill tech-fill" id="tech-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="weight-label">Weight: <span id="tech-weight-val">60%</span></div>
+                </div>
+
+                <div class="math-operator"><i data-lucide="plus"></i></div>
+
+                <div class="breakdown-item">
+                    <div class="item-header">
+                        <span>Sentiment Score</span>
+                        <span id="sent-score-val" class="score-val">--</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill sent-fill" id="sent-progress" style="width: 0%"></div>
+                    </div>
+                    <div class="weight-label">Weight: <span id="sent-weight-val">40%</span></div>
+                </div>
+
+                <div class="math-operator"><i data-lucide="equal"></i></div>
+
+                <div class="breakdown-item final-item">
+                    <div class="item-header">
+                        <span>Final Multiplier</span>
+                        <span id="final-multi-val" class="score-val final-score">--</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Indicator Deep Dive -->
+        <section class="indicator-deep-dive section-block">
+            <h2 class="section-title">Indicator Deep Dive</h2>
+
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3>RSI (Relative Strength Index)</h3>
+                    <div class="chart-value hl-value" id="rsi-val">--</div>
+                    <div class="chart-wrapper">
+                        <!-- Placeholder line for RSI since we don't have historical data in the basic endpoint, we will mock trend or show a static representation, or just a bar. -->
+                        <canvas id="rsiChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3>MACD (Moving Average Convergence Divergence)</h3>
+                    <div class="macd-values">
+                        <div class="value-item">MACD: <span id="macd-val">--</span></div>
+                        <div class="value-item">Signal: <span id="macd-sig-val">--</span></div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="macdChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Bollinger Bands</h3>
+                    <div class="bb-values">
+                        <div class="value-item">Upper: <span id="bb-upper-val">--</span></div>
+                        <div class="value-item">Lower: <span id="bb-lower-val">--</span></div>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="bbChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3>30-Day News Sentiment Trend</h3>
+                    <div class="chart-value hl-value" id="article-count-val">-- Articles</div>
+                    <div class="chart-wrapper">
+                        <canvas id="sentimentTrendChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Backtesting Chart -->
+        <section class="backtesting-section card section-block">
+            <h2 class="section-title">5-Year Strategy Comparison</h2>
+            <p class="section-subtitle">Fixed SIP vs SmartSIP Dynamic Top-Up Strategy</p>
+            <div class="backtest-chart-wrapper">
+                <canvas id="backtestChart"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>KINDLY DON’T RELY ON THIS WEBSITE AS THIS IS JUST AN AI MODEL AND IT CAN MAKE MISTAKES</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script>
+        // Initialize lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

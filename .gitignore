@@ -11,15 +11,10 @@ env/
 .venv/
 *.egg-info/
 
-<<<<<<< HEAD
 =======
 # Mac OS & Windows
 .DS_Store
 Thumbs.db
 
->>>>>>> e1f94ebf967fdb5b86d70dbb5bc42ae7eaed25d4
 # VS Code
 .vscode/
-
-# Artifacts
-artifacts/

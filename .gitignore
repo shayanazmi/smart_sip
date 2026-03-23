@@ -8,9 +8,6 @@ __pycache__/
 venv/
 *.egg-info/
 
-# Artifacts (large files — optional, remove these lines if you want to commit them)
-artifacts/
-
 # VS Code
 .vscode/
 

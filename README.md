@@ -18,7 +18,6 @@ SmartSIP makes that patience *smarter*. It uses deep learning and real-time news
 
 `sip` `systematic-investment-plan` `lstm` `deep-learning` `nifty50` `stock-market` `sentiment-analysis` `llama` `ollama` `fastapi` `fintech` `ai` `machine-learning` `nlp` `technical-analysis` `india` `mutual-funds` `personal-finance` `tensorflow` `keras`
 
-> 💡 **To add these on GitHub:** Go to your repo → ⚙️ Settings (gear icon next to "About" on the right sidebar) → paste the tags above into the **Topics** field.
 
 ---
 

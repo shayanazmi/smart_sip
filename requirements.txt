@@ -1,9 +1,8 @@
 fastapi
 uvicorn[standard]
-tensorflow
-scikit-learn
-numpy
+numpy==1.26.4
 pandas
+scikit-learn==1.3.2
 ta
 yfinance
 requests
@@ -11,3 +10,5 @@ python-dotenv
 textblob
 ollama
 pydantic
+tf-keras
+tensorflow-cpu

@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+tensorflow
+scikit-learn
+numpy
+pandas
+ta
+yfinance
+requests
+python-dotenv
+textblob
+ollama
+pydantic

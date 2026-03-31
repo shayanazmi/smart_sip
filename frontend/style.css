@@ -64,7 +64,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: -2;
-    background-color: #000000;
+    background: radial-gradient(circle at 50% 10%, #1e1b4b 0%, #000000 60%);
     overflow: hidden;
 }
 
@@ -797,6 +797,213 @@ body:not(.dark-mode)::after {
     display: flex;
     gap: 12px;
     margin-top: 10px;
+}
+
+/* ─── Landing Page Styles V2 ─── */
+.landing-view {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.landing-view.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.dashboard-view {
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.dashboard-view.fade-in {
+    opacity: 1;
+}
+
+/* Landing Header */
+.landing-header {
+    width: 100%;
+    max-width: 1200px;
+    padding: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.landing-logo {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.landing-logo .highlight {
+    color: var(--accent-primary);
+}
+
+.landing-nav {
+    display: flex;
+    gap: 32px;
+}
+
+.landing-nav a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.landing-nav a:hover {
+    color: var(--text-primary);
+}
+
+.landing-nav-btn {
+    padding: 10px 24px;
+    font-size: 1rem;
+}
+
+/* Landing Hero */
+.landing-hero {
+    text-align: center;
+    max-width: 800px;
+    padding: 40px 20px;
+    margin-bottom: 40px;
+}
+
+.landing-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 24px;
+    line-height: 1.1;
+    letter-spacing: -1px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.landing-title .highlight {
+    background: linear-gradient(135deg, #60a5fa, #3b82f6);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.landing-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+.launch-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 99px;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(37, 99, 235, 0.4);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.launch-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.6);
+}
+
+.launch-btn i {
+    width: 20px;
+    height: 20px;
+}
+
+/* Landing Features Grid */
+.landing-features-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    padding: 0 20px;
+    margin-bottom: 80px;
+    width: 100%;
+}
+
+.feature-card {
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    text-align: left;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    background: rgba(37, 99, 235, 0.1);
+    border-color: rgba(96, 165, 250, 0.3);
+}
+
+.feature-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(37, 99, 235, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    color: var(--accent-hover);
+}
+
+.feature-icon i {
+    width: 28px;
+    height: 28px;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Mobile Responsiveness for Landing Page */
+@media (max-width: 768px) {
+    .landing-nav {
+        display: none; /* simple mobile header */
+    }
+
+    .landing-title { 
+        font-size: 2.5rem; 
+    }
+
+    .landing-subtitle {
+        font-size: 1rem;
+    }
+
+    .landing-features-grid {
+        grid-template-columns: 1fr;
+        padding: 0 20px;
+    }
 }
 
 .limits-group {

@@ -22,7 +22,59 @@
         <svg id="shooting-stars-svg" class="shooting-stars" width="100%" height="100%"></svg>
     </div>
 
-    <!-- 3. Navigation Bar -->
+    <!-- ─── Landing Page View ─── -->
+    <div id="landing-view" class="landing-view">
+        
+        <!-- Dedicated Landing Header -->
+        <header class="landing-header">
+            <div class="landing-logo">Smart<span class="highlight">SIP</span></div>
+            <nav class="landing-nav">
+                <a href="#features">Features</a>
+                <a href="#how">How it Works</a>
+                <a href="#pricing">Pricing</a>
+            </nav>
+            <button id="launch-app-btn" class="launch-btn landing-nav-btn">
+                Launch App <i data-lucide="arrow-right"></i>
+            </button>
+        </header>
+
+        <div class="landing-hero">
+            <h1 class="landing-title">Revolutionize Your SIPs with <span class="highlight">AI</span></h1>
+            <p class="landing-subtitle">Harness data-driven intelligence to dynamically adjust your investments, identifying bull, bear, and neutral markets to maximize wealth.</p>
+            <!-- A subtle scroll down indicator can go here or we just keep it clean -->
+        </div>
+
+        <!-- 4 Grid Feature Cards -->
+        <div class="landing-features-grid">
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="brain"></i></div>
+                <h3>AI Insights</h3>
+                <p>Data-driven market intelligence backing every move.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="trending-up"></i></div>
+                <h3>Dynamic Top-Ups</h3>
+                <p>Automatically optimize and increase investments during market dips.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="activity"></i></div>
+                <h3>Regime Detection</h3>
+                <p>Instantly identify whether the market is overbought or oversold.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon"><i data-lucide="piggy-bank"></i></div>
+                <h3>Wealth Max</h3>
+                <p>Consistently outperform traditional fixed Systemic Investment Plans.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── Dashboard View ─── -->
+    <div id="dashboard-view" class="dashboard-view" style="display: none;">
+        <!-- 3. Navigation Bar -->
     <nav id="navbar" class="navbar">
         <div class="nav-left">
             <h1 class="logo">Smart<span class="highlight">SIP</span></h1>
@@ -239,6 +291,7 @@
     <footer class="site-footer">
         <p>KINDLY DON’T RELY ON THIS WEBSITE AS THIS IS JUST AN AI MODEL AND IT CAN MAKE MISTAKES</p>
     </footer>
+    </div> <!-- End Dashboard View -->
 
     <script src="app.js"></script>
     <script>
